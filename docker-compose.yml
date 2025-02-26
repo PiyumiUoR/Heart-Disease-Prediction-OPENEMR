@@ -5,5 +5,4 @@
       - "5001:5001"
     volumes:
       - ./ml-service:/app
-    depends_on:
-      - openemr
+  

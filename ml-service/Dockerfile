@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy the ML service files
 COPY model.py .
 COPY requirements.txt .
+COPY train_values.csv .
+COPY Train_Labels.csv .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
