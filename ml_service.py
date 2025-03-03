@@ -2,11 +2,26 @@ from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 import requests
+import time
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
+
+def wait_for_openemr():
+    url = "http://86.50.231.152:8300"  # Ensure this is the correct URL and port
+    while True:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                print("OpenEMR is up and running")
+                break
+        except requests.ConnectionError:
+            print("Waiting for OpenEMR...")
+        time.sleep(5)
+
+wait_for_openemr()
 
 # Load and preprocess training data
 df_train = pd.read_csv('train_values.csv')
