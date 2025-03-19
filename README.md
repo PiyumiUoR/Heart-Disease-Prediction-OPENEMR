@@ -35,7 +35,7 @@ root-directory
 3. Add below code snippet to the `docker-compose.yml` file. 
 
 ```yml
-zookeeper:
+  zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
     restart: always
